@@ -126,13 +126,19 @@ public class Player {
         {
             movePlayerBack(myRoutes);
         }
+
+	//IF PLAYER LANDS ON ARROW THAT GOES TO 3RD ROUTE
+	else if(currentSpace.getSpaceType().equals("arrow")){
+	   advanceRoute(myRoutes);
+	   //movePlayerForward(myRoutes);
+	}
         
         else if(currentSpace.getSpaceType().equals("finish"))
         {
             Game.setWinner(this);
         }
         
-        //DO NOTHING BECAUSE THE PLAYER LANDED ON A COLORED SPACE, AND THE BUTTON WAS NOT SET TO THAT COLOR OR ITS A PURPLE SPACE
+        //DO NOTHING BECAUSE THE PLAYER LANDED ON A COLORED SPACE, AND THE BUTTON WAS NOT SET TO THAT COLOR OR ITS A PURPLE OR ORANGE SPACE
         else{
             
         }
@@ -160,15 +166,26 @@ public class Player {
                 System.out.println("Moved back to start of "  + currentRoute + "\n"); // testing
                 break;
                 
-            //MOVE TO START OF ROUTE 2
+            //MOVE TO START OF ROUTE 3
             case "spoke2":
-                currentRoute = 2;
-                currentSpace = routes[2].getFirstSpace();
+                currentRoute = 3;
+                currentSpace = routes[3].getFirstSpace();
                 currentPosition = 0;
                 System.out.println("Moved back to start of "  + currentRoute + "\n"); // testing
                 break;
         }
     
     }
+
+    void movePlayerForward(Route[] routes){
+	System.out.println(this.playerColor +  " moved to " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+                
+            //MOVE TO START OF ROUTE 3
+                currentRoute = 2;
+                currentSpace = routes[3].getFirstSpace();
+                currentPosition = 0;
+                System.out.println("Moved forward to start of "  + currentRoute + "\n"); // testing
+           
+   }
     
 }

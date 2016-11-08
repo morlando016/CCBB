@@ -2,7 +2,6 @@
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
-Edited by jen for commit
  */
 
 package orlandogruss_ccbb;
@@ -28,7 +27,8 @@ public class Game {
         routes = new Route[3];
         routes[0] = new Route(0, 27);
         routes[1] = new Route(1, 19);
-        routes[2] = new Route(2, 18);
+	routes[2] = new Route(2, 17);
+        routes[3] = new Route(3, 18);
     }
     
     // starts a user game
