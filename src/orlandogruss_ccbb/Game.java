@@ -24,7 +24,7 @@ public class Game {
     private Player playerRolling;
     
     Game(){
-        routes = new Route[3];
+        routes = new Route[4];
         routes[0] = new Route(0, 27);
         routes[1] = new Route(1, 19);
 	routes[2] = new Route(2, 17);

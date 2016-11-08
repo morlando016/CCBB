@@ -63,8 +63,10 @@ public class Player {
             
             currentPosition = currentSpace.getRoutePos();
   
+            System.out.println("Current Route: " + currentRoute);
+          
             landedOn(myRoutes[currentRoute].getMyButton(), myRoutes);
-            
+
                 //System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
                 
                 return true;
@@ -73,6 +75,11 @@ public class Player {
         {
             return false;
         }
+    }
+    
+    
+    void newRouteLandedOn(Route[] myRoutes){
+    
     }
     
     void landedOn(MagicButton myButton, Route[] myRoutes)
@@ -88,30 +95,35 @@ public class Player {
         //IF PLAYER LANDS ON BLACK AND BUTTON IS SET TO THEIR COLOR
         else if(currentSpace.getSpaceType().equals("black") && myButton.getButtonColor().equals(playerColor))
         {
+            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             advanceRoute(myRoutes);
         }
         
         //IF PLAYER LANDS ON BLUE AND BUTTON IS SET TO BLUE
         else if(currentSpace.getSpaceType().equals("blue") && myButton.getButtonColor().equals("blue"))
         {
+            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             advanceRoute(myRoutes);
         }
         
         //IF PLAYER LANDS ON GREEN AND BUTTON IS SET TO GREEN
         else if(currentSpace.getSpaceType().equals("green") && myButton.getButtonColor().equals("green"))
         {
+            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             advanceRoute(myRoutes);
         }
         
         //IF PLAYER LANDS ON RED AND BUTTON IS SET TO RED
         else if(currentSpace.getSpaceType().equals("red") && myButton.getButtonColor().equals("red"))
         {
+            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             advanceRoute(myRoutes);
         }
         
         //IF PLAYER LANDS ON YELLOW AND BUTTON IS SET TO YELLOW
         else if(currentSpace.getSpaceType().equals("yellow") && myButton.getButtonColor().equals("yellow"))
         {
+            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             advanceRoute(myRoutes);
         }
         
@@ -124,14 +136,22 @@ public class Player {
         //IF PLAYER LANDS ON SPOKE THAT GOES TO 2ND ROUTE
         else if(currentSpace.getSpaceType().equals("spoke2"))
         {
+            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             movePlayerBack(myRoutes);
         }
 
 	//IF PLAYER LANDS ON ARROW THAT GOES TO 3RD ROUTE
 	else if(currentSpace.getSpaceType().equals("arrow")){
-	   advanceRoute(myRoutes);
+	   System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+            advanceRoute(myRoutes);
 	   //movePlayerForward(myRoutes);
 	}
+        
+        else if(currentSpace.getSpaceType().equals("orange") && (currentSpace.getRoutePos() == 16)){
+            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+            System.out.println("Should be advancing to 3, end of route 2");
+            advanceRoute(myRoutes);
+        }
         
         else if(currentSpace.getSpaceType().equals("finish"))
         {

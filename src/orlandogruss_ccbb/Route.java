@@ -121,29 +121,6 @@ public class Route {
             myRoute[26] = new Space("red", this, 26);
 
     }
-
-	private void constructNew()
-    {
-            //FIRST SPACE IS NULL, BECAUSE YOU START BETWEEN SPACES
-            myRoute[0] = new Space("start", this, 0);
-            myRoute[1] = new Space("orange", this, 1);
-            myRoute[2] = new Space("orange", this, 2);
-            myRoute[3] = new Space("orange", this, 3);
-            myRoute[4] = new Space("orange", this, 4);
-            myRoute[5] = new Space("orange", this, 5);
-            myRoute[6] = new Space("arrow1", this, 6);
-            myRoute[7] = new Space("orange", this, 7);
-            myRoute[8] = new Space("orange", this, 8);
-            myRoute[9] = new Space("orange", this, 9);
-            myRoute[10] = new Space("orange", this, 10);
-            myRoute[11] = new Space("arrow2", this, 11);
-            myRoute[12] = new Space("orange", this, 12);
-            myRoute[13] = new Space("orange", this, 13);
-            myRoute[14] = new Space("orange", this, 14);
-            myRoute[15] = new Space("orange", this, 15);
-            myRoute[16] = new Space("orange", this, 16);
-
-    } 
     
      private void constructFirst()
     {
@@ -169,6 +146,29 @@ public class Route {
             myRoute[18] = new Space("black", this, 18);
             
     }
+     
+    private void constructNew()
+    {
+            //FIRST SPACE IS NULL, BECAUSE YOU START BETWEEN SPACES
+            myRoute[0] = new Space("start", this, 0);
+            myRoute[1] = new Space("orange", this, 1);
+            myRoute[2] = new Space("orange", this, 2);
+            myRoute[3] = new Space("orange", this, 3);
+            myRoute[4] = new Space("orange", this, 4);
+            myRoute[5] = new Space("orange", this, 5);
+            myRoute[6] = new Space("orange", this, 6);
+            myRoute[7] = new Space("orange", this, 7);
+            myRoute[8] = new Space("orange", this, 8);
+            myRoute[9] = new Space("orange", this, 9);
+            myRoute[10] = new Space("orange", this, 10);
+            myRoute[11] = new Space("arrow", this, 11);
+            myRoute[12] = new Space("orange", this, 12);
+            myRoute[13] = new Space("orange", this, 13);
+            myRoute[14] = new Space("orange", this, 14);
+            myRoute[15] = new Space("orange", this, 15);
+            myRoute[16] = new Space("orange", this, 16);
+
+    } 
      
      private void constructSecond()
     {
