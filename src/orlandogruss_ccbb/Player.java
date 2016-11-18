@@ -53,6 +53,8 @@ public class Player {
          roll = playerDie.userRollDie();
         // roll = playerDie.CSVRoll();
         //roll = playerDie.randRollDie();
+        
+        
         // -1 means the end of the CSV, thus this function returns false
         if (roll != -1)
         {
