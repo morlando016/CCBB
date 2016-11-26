@@ -67,7 +67,7 @@ public class Player {
           
             landedOn(myRoutes[currentRoute].getMyButton(), myRoutes);
 
-                //System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+                System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
                 
                 return true;
         }
@@ -88,42 +88,42 @@ public class Player {
         //IF PLAYER LANDS ON BLACK AND BUTTON IS SET TO ANOTHER COLOR OR NO COLOR
         if(currentSpace.getSpaceType().equals("black") && !myButton.getButtonColor().equals(playerColor))
         {
-            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+            //System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             myButton.setButtonColor(playerColor);
         }
         
         //IF PLAYER LANDS ON BLACK AND BUTTON IS SET TO THEIR COLOR
         else if(currentSpace.getSpaceType().equals("black") && myButton.getButtonColor().equals(playerColor))
         {
-            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+            //System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             advanceRoute(myRoutes);
         }
         
         //IF PLAYER LANDS ON BLUE AND BUTTON IS SET TO BLUE
         else if(currentSpace.getSpaceType().equals("blue") && myButton.getButtonColor().equals("blue"))
         {
-            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+            //System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             advanceRoute(myRoutes);
         }
         
         //IF PLAYER LANDS ON GREEN AND BUTTON IS SET TO GREEN
         else if(currentSpace.getSpaceType().equals("green") && myButton.getButtonColor().equals("green"))
         {
-            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+            //System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             advanceRoute(myRoutes);
         }
         
         //IF PLAYER LANDS ON RED AND BUTTON IS SET TO RED
         else if(currentSpace.getSpaceType().equals("red") && myButton.getButtonColor().equals("red"))
         {
-            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+            //System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             advanceRoute(myRoutes);
         }
         
         //IF PLAYER LANDS ON YELLOW AND BUTTON IS SET TO YELLOW
         else if(currentSpace.getSpaceType().equals("yellow") && myButton.getButtonColor().equals("yellow"))
         {
-            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+           // System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             advanceRoute(myRoutes);
         }
         
