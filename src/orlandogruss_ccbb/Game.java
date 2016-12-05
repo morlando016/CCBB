@@ -6,11 +6,14 @@
 
 package orlandogruss_ccbb;
 
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,25 +38,23 @@ public class Game {
     public void startGame() {
         Scanner input = new Scanner(System.in);
         
-        System.out.println("Welcome to Chitty Chitty Bang Bang!" + "\n");
-
-        System.out.println("How many players will be joining us?" + "\n"
-        + "Please enter 1, 2, 3, or 4" + "\n");
-
-        if(input.hasNextInt()){
-            numberOfPlayers = input.nextInt();
-                if(numberOfPlayers <= 4){
+         String errorMessage = "";
+        do {
+            // Show input dialog with current error message, if any
+            String stringInput = JOptionPane.showInputDialog(errorMessage + "Welcome to Chiddy Chiddy Bang Bang. \n How many players will be playing?");
+            try {
+                numberOfPlayers = Integer.parseInt(stringInput);
+                if (numberOfPlayers > 4 || numberOfPlayers < 1) {
+                    errorMessage = "Please enter a number between 1 and 4 \n";
+                } else {
                     choosePlayerColor();
                 }
-                else{
-                    System.err.println("You entered " + numberOfPlayers + ". Please Enter an integer value between 1 and 4.");
-                    startGame();
-                }
-        }else{
-            System.err.println("Please enter an integer value between 1 and 4.");
-            input.next();
-            startGame();
-        }
+            } catch (NumberFormatException e) {
+                // The typed text was not an integer
+                errorMessage = "The text you typed is not a number.\n";
+            }
+        } while (!errorMessage.isEmpty());
+
     }
     
     private void choosePlayerColor(){
