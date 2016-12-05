@@ -13,6 +13,9 @@
 
 package orlandogruss_ccbb;
 
+import java.awt.EventQueue;
+import java.awt.event.WindowEvent;
+import javax.swing.*;
 /**
  *
  * @author orlando016
@@ -48,12 +51,31 @@ public class Player {
     boolean takeMyTurn(Route[] myRoutes)
     {
         int roll; 
-        
+        Object[] options = {"Roll"};
+        JFrame rollFrame = new JFrame("roll");
+                rollFrame.setLocation(600,400);
+                rollFrame.setVisible(true);
+                rollFrame.setAlwaysOnTop(true);
+                rollFrame.setAlwaysOnTop(false);
+                
+                JOptionPane.showOptionDialog(rollFrame,
+                    this.playerColor + ": Please click roll to take your turn",
+                    this.playerColor + " Rolling",
+                    JOptionPane.YES_OPTION,
+                    JOptionPane.QUESTION_MESSAGE,
+                    null,     //do not use a custom Icon
+                    options,  //the titles of buttons
+                    options[0]); //default button title
+    
+                //Should close the app but doesn't
+                
+                
         // change the type of roll {CSVRoll, userRollDie, randRollDie,}
-         roll = playerDie.userRollDie();
+         roll = playerDie.randRollDie();
         // roll = playerDie.CSVRoll();
         //roll = playerDie.randRollDie();
-        
+         JOptionPane.showMessageDialog(rollFrame, this.playerColor + ": rolled a " + roll);
+        rollFrame.dispose();
         
         // -1 means the end of the CSV, thus this function returns false
         if (roll != -1)
@@ -68,8 +90,10 @@ public class Player {
             System.out.println("Current Route: " + currentRoute);
           
             landedOn(myRoutes[currentRoute].getMyButton(), myRoutes);
-
-                System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+                
+            displayPlayerPosition(this.playerColor +  " landed on position " + currentPosition + ": " + currentSpace.getSpaceType() + " on route #" + (currentRoute + 1)+ "\n");
+                
+                //System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
                 
                 return true;
         }
@@ -77,11 +101,6 @@ public class Player {
         {
             return false;
         }
-    }
-    
-    
-    void newRouteLandedOn(Route[] myRoutes){
-    
     }
     
     void landedOn(MagicButton myButton, Route[] myRoutes)
@@ -144,14 +163,14 @@ public class Player {
 
 	//IF PLAYER LANDS ON ARROW THAT GOES TO 3RD ROUTE
 	else if(currentSpace.getSpaceType().equals("arrow")){
-	   System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+	   //System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
             advanceRoute(myRoutes);
 	   //movePlayerForward(myRoutes);
 	}
         
         else if(currentSpace.getSpaceType().equals("orange") && (currentSpace.getRoutePos() == 16)){
-            System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
-            System.out.println("Should be advancing to 3, end of route 2");
+            //System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+            //System.out.println("Should be advancing to 3, end of route 2");
             advanceRoute(myRoutes);
         }
         
@@ -167,16 +186,24 @@ public class Player {
     }
     
     void advanceRoute(Route[] routes)
-    {   System.out.println(this.playerColor +  " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+    {   
+       displayPlayerPosition(this.playerColor +  " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + (currentRoute + 1) + "\n");
+       
+        //System.out.println(this.playerColor +  " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
         currentRoute++;
         currentSpace = routes[currentRoute].getFirstSpace();
         currentPosition = currentSpace.getRoutePos();
-        System.out.println(this.playerColor + " moved to route  #"  + currentRoute + "\n"); // testing
+
+       displayPlayerPosition(this.playerColor + " moved to route  #"  + (currentRoute + 1) + "\n");
+
+        //System.out.println(this.playerColor + " moved to route  #"  + currentRoute + "\n"); // testing
     }
     
     void movePlayerBack(Route[] routes)
     {
-        System.out.println(this.playerColor +  " moved to " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+       displayPlayerPosition(this.playerColor +  " moved to " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + (currentRoute + 1) + "\n");
+  
+        //System.out.println(this.playerColor +  " moved to " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
         
         switch (currentSpace.getSpaceType()) {
         
@@ -185,7 +212,9 @@ public class Player {
                 currentRoute = 1;
                 currentSpace = routes[1].getFirstSpace();
                 currentPosition = 0;
-                System.out.println("Moved back to start of "  + currentRoute + "\n"); // testing
+                displayPlayerPosition("Moved back to start of "  + (currentRoute + 1) + "\n");
+               
+                //System.out.println("Moved back to start of "  + currentRoute + "\n"); // testing
                 break;
                 
             //MOVE TO START OF ROUTE 3
@@ -193,21 +222,21 @@ public class Player {
                 currentRoute = 3;
                 currentSpace = routes[3].getFirstSpace();
                 currentPosition = 0;
-                System.out.println("Moved back to start of "  + currentRoute + "\n"); // testing
+                displayPlayerPosition("Moved back to start of "  + (currentRoute + 1) + "\n");
+                //System.out.println("Moved back to start of "  + currentRoute + "\n"); // testing
                 break;
         }
     
     }
-
-    void movePlayerForward(Route[] routes){
-	System.out.println(this.playerColor +  " moved to " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
-                
-            //MOVE TO START OF ROUTE 3
-                currentRoute = 2;
-                currentSpace = routes[3].getFirstSpace();
-                currentPosition = 0;
-                System.out.println("Moved forward to start of "  + currentRoute + "\n"); // testing
-           
-   }
+    
+    void displayPlayerPosition(String message){
+       JFrame playerPositionFrame = new JFrame("tmp");
+       playerPositionFrame.setLocation(600,400);
+       playerPositionFrame.setVisible(true);
+       playerPositionFrame.setAlwaysOnTop(true);
+       playerPositionFrame.setAlwaysOnTop(false);
+       JOptionPane.showMessageDialog(playerPositionFrame, message);
+       playerPositionFrame.dispose();
+    }
     
 }

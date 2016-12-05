@@ -28,10 +28,10 @@ public class Die {
         int newRoll;
         boolean temp;
         do {
-        System.out.println("Please input a roll: ");
-        Scanner scan = new Scanner(System.in);
-        newRoll = scan.nextInt();
-        temp = setRoll(newRoll);
+            System.out.println("Please input a roll: ");
+            Scanner scan = new Scanner(System.in);
+            newRoll = scan.nextInt();
+            temp = setRoll(newRoll);
         } while (!temp);
 
         return rollValue;
@@ -40,6 +40,7 @@ public class Die {
     // automated random roller
     int randRollDie()
     { 
+        //rollButton.addActionListener(new ButtonClickListener());
         Random randomGenerator = new Random();
         int randomRoll = randomGenerator.nextInt(dieSide);
 
@@ -47,6 +48,7 @@ public class Die {
         //System.out.println("You rolled " + rollValue + "\n");
         return rollValue;
     }
+    
     
     // passes CSV roll value as the current roll;
     //int CSVRoll()

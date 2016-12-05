@@ -41,16 +41,16 @@ public class Route {
     {
 	switch(routeNum){
 	case 0:
-		constructZeroth();		
+		constructFirst();		
 		break;
 	case 1: 
-		constructFirst();
+		constructSecond();
 		break;
 	case 2:
-		constructNew();
+		constructThird();
 		break;
 	case 3: 
-		constructSecond();
+		constructFourth();
 		break;
 	default:
 		System.out.println("Problem constructing routes"); // testing
@@ -89,7 +89,7 @@ public class Route {
         return this.myButton;
     }
     
-    private void constructZeroth()
+    private void constructFirst()
     {
             //FIRST SPACE IS NULL, BECAUSE YOU START BETWEEN SPACES
             myRoute[0] = new Space("start", this, 0);
@@ -122,7 +122,7 @@ public class Route {
 
     }
     
-     private void constructFirst()
+     private void constructSecond()
     {
             //FIRST SPACE IS NULL, BECAUSE YOU START BETWEEN SPACES
             myRoute[0] = new Space("start", this, 0);
@@ -147,7 +147,7 @@ public class Route {
             
     }
      
-    private void constructNew()
+    private void constructThird()
     {
             //FIRST SPACE IS NULL, BECAUSE YOU START BETWEEN SPACES
             myRoute[0] = new Space("start", this, 0);
@@ -170,7 +170,7 @@ public class Route {
 
     } 
      
-     private void constructSecond()
+     private void constructFourth()
     {
             //FIRST SPACE IS NULL, BECAUSE YOU START BETWEEN SPACES
             myRoute[0] = new Space("start", this, 0);
