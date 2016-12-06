@@ -38,7 +38,7 @@ public class Game {
     public void startGame() {
         Scanner input = new Scanner(System.in);
         
-         String errorMessage = "";
+        String errorMessage = "";
         do {
             // Show input dialog with current error message, if any
             String stringInput = JOptionPane.showInputDialog(errorMessage + "Welcome to Chiddy Chiddy Bang Bang. \n How many players will be playing?");
@@ -62,26 +62,23 @@ public class Game {
         String playerColor;
         List<String> playerColors = new ArrayList<String>(Arrays.asList("red", "green", "blue", "yellow"));
         List<String> usedPlayerColors = new ArrayList<String>();
-        Scanner input = new Scanner(System.in);
-
-        do{
-            boolean playerSuccess = false;
-            while(playerSuccess == false){
-                System.out.println("Available Colors Are " + playerColors);
-                System.out.println("Player " + (playerOrder+1) + ", please Choose a Color");
-
-                playerColor = input.nextLine();
-                if(usedPlayerColors.contains(playerColor)){
-                    System.err.println("You Entered " + playerColor + ". The Only available Colors are " + playerColors);
-                }
-                else{
+        String errorMessage = "";
+        do {
+             System.out.println("Available Colors Are " + playerColors);
+             System.out.println("Player " + (playerOrder+1) + ", please Choose a Color");
+            
+            // Show input dialog with current error message, if any
+            playerColor = JOptionPane.showInputDialog(errorMessage + "Available Colors Are: " + playerColors + "\n Player " + (playerOrder+1) + ", please Choose a Color");
+            try {
+                if (usedPlayerColors.contains(playerColor) ) {
+                    errorMessage = "Available Colors Are " + playerColors + "\n";
+                } else {
                     switch (playerColor) {
                         case "red":
                             Player redPlayer = new Player(playerColor);
                             players.add(playerOrder, redPlayer);
                             usedPlayerColors.add(playerOrder, playerColor);
                             playerColors.removeAll(usedPlayerColors);
-                            playerSuccess = true;
                             playerOrder++;
                             break;
                         case "green":
@@ -89,7 +86,6 @@ public class Game {
                             players.add(playerOrder, greenPlayer);
                             usedPlayerColors.add(playerOrder, playerColor);
                             playerColors.removeAll(usedPlayerColors);
-                            playerSuccess = true;
                             playerOrder++;
                             break;
                         case "blue":
@@ -97,7 +93,6 @@ public class Game {
                             players.add(playerOrder, bluePlayer);
                             usedPlayerColors.add(playerOrder, playerColor);
                             playerColors.removeAll(usedPlayerColors);
-                            playerSuccess = true;
                             playerOrder++;
                             break;
                         case "yellow":
@@ -105,18 +100,18 @@ public class Game {
                             players.add(playerOrder, yellowPlayer);
                             usedPlayerColors.add(playerOrder, playerColor);
                             playerColors.removeAll(usedPlayerColors);
-                            playerSuccess = true;
                             playerOrder++;
                             break;
                         default:
-                            System.err.println("Invalid Input: " + playerColor + " does not exist as an available color");
+                            errorMessage = "Invalid Input: " + playerColor + " does not exist as an available color \n";
                             break;
                     }
                 }
-
+            } catch (Exception e) {
+                // The typed text was not an integer
+                errorMessage = "The text you typed is not a number.\n";
             }
-
-        }while(playerOrder < numberOfPlayers);
+        } while (playerOrder < numberOfPlayers);
 
         playGame();
     }
@@ -165,6 +160,13 @@ public class Game {
     private static void endGame(){
         if (winningPlayer != null)
         {
+             JFrame jf = new JFrame("tmp");
+                jf.setLocation(600,400);
+                jf.setVisible(true);
+                jf.setAlwaysOnTop(true);
+                jf.setAlwaysOnTop(false);
+                JOptionPane.showMessageDialog(jf, "The winner is " + winningPlayer.getPlayerColor() + "\n");
+                jf.dispatchEvent(new WindowEvent(jf, WindowEvent.WINDOW_CLOSING));
             System.out.println("The winner is " + winningPlayer.getPlayerColor() + "\n");
         }
         else
