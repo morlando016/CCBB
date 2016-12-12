@@ -92,7 +92,7 @@ public class Player {
             landedOn(myRoutes[currentRoute].getMyButton(), myRoutes);
                 
             displayPlayerPosition(this.playerColor +  " landed on position " + currentPosition + ": " + currentSpace.getSpaceType() + " on route #" + (currentRoute + 1)+ "\n");
-                
+
                 //System.out.println(this.playerColor + " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
                 
                 return true;
@@ -189,6 +189,7 @@ public class Player {
     {   
        displayPlayerPosition(this.playerColor +  " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + (currentRoute + 1) + "\n");
        
+
         //System.out.println(this.playerColor +  " landed on " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
         currentRoute++;
         currentSpace = routes[currentRoute].getFirstSpace();
@@ -196,13 +197,16 @@ public class Player {
 
        displayPlayerPosition(this.playerColor + " moved to route  #"  + (currentRoute + 1) + "\n");
 
+
         //System.out.println(this.playerColor + " moved to route  #"  + currentRoute + "\n"); // testing
     }
     
     void movePlayerBack(Route[] routes)
     {
+
        displayPlayerPosition(this.playerColor +  " moved to " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + (currentRoute + 1) + "\n");
   
+
         //System.out.println(this.playerColor +  " moved to " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
         
         switch (currentSpace.getSpaceType()) {
@@ -214,6 +218,7 @@ public class Player {
                 currentPosition = 0;
                 displayPlayerPosition("Moved back to start of "  + (currentRoute + 1) + "\n");
                
+
                 //System.out.println("Moved back to start of "  + currentRoute + "\n"); // testing
                 break;
                 
@@ -223,11 +228,13 @@ public class Player {
                 currentSpace = routes[3].getFirstSpace();
                 currentPosition = 0;
                 displayPlayerPosition("Moved back to start of "  + (currentRoute + 1) + "\n");
+
                 //System.out.println("Moved back to start of "  + currentRoute + "\n"); // testing
                 break;
         }
     
     }
+
     
     void displayPlayerPosition(String message){
        JFrame playerPositionFrame = new JFrame("tmp");
@@ -238,5 +245,30 @@ public class Player {
        JOptionPane.showMessageDialog(playerPositionFrame, message);
        playerPositionFrame.dispose();
     }
+
+
+    void movePlayerForward(Route[] routes){
+        JFrame jf = new JFrame("tmp");
+        jf.setLocation(600,400);
+        jf.setVisible(true);
+        jf.setAlwaysOnTop(true);
+        jf.setAlwaysOnTop(false);
+        JOptionPane.showMessageDialog(jf, this.playerColor +  " moved to " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+        jf.dispose();
+	//System.out.println(this.playerColor +  " moved to " + currentPosition + ":" + currentSpace.getSpaceType() + " on route #" + currentRoute + "\n");
+                
+            //MOVE TO START OF ROUTE 3
+                currentRoute = 2;
+                currentSpace = routes[3].getFirstSpace();
+                currentPosition = 0;
+                jf.setLocation(600,400);
+                jf.setVisible(true);
+                jf.setAlwaysOnTop(true);
+                jf.setAlwaysOnTop(false);
+                JOptionPane.showMessageDialog(jf, "Moved forward to start of "  + currentRoute + "\n");
+                jf.dispose();
+                //System.out.println("Moved forward to start of "  + currentRoute + "\n"); // testing
+           
+   }
     
 }
